@@ -1,0 +1,14 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+<bean id="cache" class="ru.otus.skuznets.hw13.cache.CacheEngineImpl">
+        <constructor-arg name="maxElements" value="5"/>
+    </bean>
+
+    <bean id="templateProcessor" class="ru.otus.skuznets.hw13.servlet.TemplateProcessor"/>
+    <bean id="dbService" class="ru.otus.skuznets.hw13.DBServiceImpl">
+        <constructor-arg ref="cache" type="ru.otus.skuznets.hw13.cache.CacheEngine"/>
+    </bean>
+</beans>
